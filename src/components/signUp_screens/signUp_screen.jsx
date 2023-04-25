@@ -4,36 +4,34 @@ import { useState } from "react";
 
 function SignUp() {
   let [form, setForm] = useState({});
-  let obj = {};
+ 
   function changer(event) {
     let name = event.target.name;
-    obj[name] = event.target.value;
-    setForm(obj);
-    console.log(form);
+    setForm({...form,[name]:event.target.value})
+    
   }
   return (
     <S.Body>
         <S.H1>Регистрация</S.H1>
       <S.ValueBox>
         <p>Логин для входа в кабинет</p>
-        <S.Inputs onChange={changer} name="login" type="text" />
+        <S.Inputs onInput={changer} name="login" type="text" />
       </S.ValueBox>
-
       <S.ValueBox>
         <p>Имя</p>
-        <S.Inputs onChange={changer} name="name" type="text" />
+        <S.Inputs onInput={changer} name="firstname" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>Фамилия</p>
-        <S.Inputs onChange={changer} name="surname" type="text" />
+        <S.Inputs onInput={changer} name="lastname" type="text" />
       </S.ValueBox>
       <S.ValueBox>
-        <p>Отчесто</p>
-        <S.Inputs onChange={changer} name="middlename" type="text" />
+        <p>Отчество</p>
+        <S.Inputs onChange={changer} name="patronymic" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>Наименование организации</p>
-        <S.Inputs onChange={changer} name="organization" type="text" />
+        <S.Inputs onChange={changer} name="organization_name" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>email</p>
@@ -42,12 +40,17 @@ function SignUp() {
 
       <S.ValueBox>
         <p>ИНН организации</p>
-        <S.Inputs onChange={changer} name="inn" type="inn" />
+        <S.Inputs onChange={changer} name="taxpayer_id" type="text" />
       </S.ValueBox>
 
       <S.ValueBox>
         <p>КПП организации</p>
-        <S.Inputs onChange={changer} name="kpp" type="kpp" />
+        <S.Inputs onChange={changer} name="tax_registration_reason_code" type="text" />
+      </S.ValueBox>
+
+      <S.ValueBox>
+        <p>Юридический адресс</p>
+        <S.Inputs onChange={changer} name="registered_address" type="text" />
       </S.ValueBox>
 
       <S.ValueBox>
@@ -56,9 +59,9 @@ function SignUp() {
       </S.ValueBox>
       <S.ValueBox>
         <p>повтор пароля для входа в кабинет </p>
-        <S.Inputs onChange={changer} name="passwordtwo" type="password" />
+        <S.Inputs onChange={changer} name="password_repeat" type="password" />
       </S.ValueBox>
-      <S.Button>Зарегестрироваться</S.Button>
+      <S.Button onClick={()=>console.log(form)}>Зарегестрироваться</S.Button>
     </S.Body>
   );
 }
