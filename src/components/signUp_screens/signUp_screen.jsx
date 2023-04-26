@@ -10,20 +10,22 @@ function SignUp() {
     setForm({...form,[name]:event.target.value})
     
   }
+
+
   return (
     <S.Body>
         <S.H1>Регистрация</S.H1>
       <S.ValueBox>
         <p>Логин для входа в кабинет</p>
-        <S.Inputs onInput={changer} name="login" type="text" />
+        <S.Inputs onChange={changer} name="login" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>Имя</p>
-        <S.Inputs onInput={changer} name="firstname" type="text" />
+        <S.Inputs onChange={changer} name="firstname" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>Фамилия</p>
-        <S.Inputs onInput={changer} name="lastname" type="text" />
+        <S.Inputs onChange={changer} name="lastname" type="text" />
       </S.ValueBox>
       <S.ValueBox>
         <p>Отчество</p>
@@ -50,7 +52,7 @@ function SignUp() {
 
       <S.ValueBox>
         <p>Юридический адресс</p>
-        <S.Inputs onChange={changer} name="registered_address" type="text" />
+        <S.Inputs onChange={changer} name="registered_address" type="text"/>
       </S.ValueBox>
 
       <S.ValueBox>
