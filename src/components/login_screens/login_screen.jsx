@@ -11,7 +11,7 @@ function LoginScreen() {
       <S.loginInput type="text" />
         <p>пароль</p>
       <S.loginInput type="password" />
-    <Link to={'/home'}><button>войти</button></Link> 
+    <Link to={'/home'}><S.ButtonEntr>войти</S.ButtonEntr></Link> 
       
       <Link to={'/signup'}><S.ButtonReg>зарегистрироваться</S.ButtonReg></Link> 
       </S.Loginbox>
