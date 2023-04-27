@@ -66,6 +66,7 @@ function SignUp() {
   return (
     <S.Body>
       <S.H1>Регистрация</S.H1>
+      <S.Box>
       <S.ValueBox>
         <p>Логин для входа в кабинет</p>
         {(login.minLengthError || login.maxLengthError) &&
@@ -331,6 +332,7 @@ function SignUp() {
         onBlur={(e) => passwordRep.onBlur(e)}
         value={passwordRep.value} name="password_repeat" type="password" />
       </S.ValueBox>
+      </S.Box>
       <S.Button
         onClick={() => {
           if (form.password && form.password === form.password_repeat) {
