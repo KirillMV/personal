@@ -7,6 +7,9 @@ const useValidation = (value, validations) => {
     const [emailError, setEmailError] = useState(false);
     const [namesError,setNameError] = useState(false)
     const [numberError,setNumberError] = useState(false)
+    const [latNumbers,setLatNumbers] = useState(false)
+    const [anyAndNumbers,setAnyAndNumbers] = useState(false)
+    const [inputValid,setInputValid] = useState(false)
   
     useEffect(() => {
       for (const validation in validations) {
@@ -43,20 +46,44 @@ const useValidation = (value, validations) => {
                 ? setNumberError(false)
                 : setNumberError(true);
                 break;
+            case "semiNumbers":
+              const reSemiNumbers = /^[A-Za-z0-9_]+$/
+              reSemiNumbers.test(String(value).toLowerCase())
+                ? setLatNumbers(false)
+                : setLatNumbers(true);
+              break;
+            case "anyAndNumbers":
+              const reAllNumbers =  /^ [0-9][а-яёa-z]+$/iu
+              reAllNumbers.test(String(value).toLowerCase())
+              ? setAnyAndNumbers(false)
+              : setAnyAndNumbers(true);
+              break;
             default:
                 console.log('Такой валидации нету');
                 break;
+            
         }
       }
     }, [value]);
   
+useEffect(()=>{
+if(isEmpty || minLengthError || maxLengthError || emailError || namesError || numberError){
+  setInputValid(false)
+}else{
+  setInputValid(true)
+}
+},[isEmpty,minLengthError,maxLengthError,emailError,namesError,numberError])
+
     return {
       isEmpty,
       minLengthError,
       emailError,
       maxLengthError,
       namesError,
-      numberError
+      numberError,
+      inputValid,
+      latNumbers,
+      anyAndNumbers
     };
   };
 
