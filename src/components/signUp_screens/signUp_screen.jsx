@@ -6,11 +6,6 @@ import useInput from "../validation_hooks/use-input";
 function SignUp() {
   let [form, setForm] = useState({});
 
-  function changer(e) {
-    // let name = event.target.name;
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }
-
   const login = useInput("", {
     isEmpty: true,
     minLength: 3,
@@ -215,15 +210,15 @@ function SignUp() {
       <S.ValueBox>
         <p>ИНН организации</p>
         {taxpayerId.isDirty && taxpayerId.isEmpty && (
-          <div>Обязательное поле</div>
+          <div style={{ color: "red" }}>Обязательное поле</div>
         )}
         {taxpayerId.isDirty &&
           !taxpayerId.isEmpty &&
-          taxpayerId.numberError && <div>Некорректный ИНН</div>}
+          taxpayerId.numberError && <div style={{ color: "red" }}>Некорректный ИНН</div>}
         {taxpayerId.isDirty &&
           !taxpayerId.isEmpty &&
           (taxpayerId.minLengthError || taxpayerId.maxLengthError) && (
-            <div>Некорректная длинна ИНН</div>
+            <div style={{ color: "red" }}>Некорректная длинна ИНН</div>
           )}
         <S.Inputs
           onChange={(e) => {
@@ -240,15 +235,15 @@ function SignUp() {
       <S.ValueBox>
         <p>КПП организации</p>
         {taxRegCode.isDirty && taxRegCode.isEmpty && (
-          <div>Обязательное поле</div>
+          <div style={{ color: "red" }}>Обязательное поле</div>
         )}
         {taxRegCode.isDirty &&
           !taxRegCode.isEmpty &&
-          taxRegCode.numberError && <div>Некорректный КПП</div>}
+          taxRegCode.numberError && <div style={{ color: "red" }}>Некорректный КПП</div>}
         {taxRegCode.isDirty &&
           !taxRegCode.isEmpty &&
           (taxRegCode.minLengthError || taxRegCode.maxLengthError) && (
-            <div>Некорректная длинна КПП</div>
+            <div style={{ color: "red" }}>Некорректная длинна КПП</div>
           )}
         <S.Inputs
           onChange={(e) => {
@@ -316,9 +311,6 @@ function SignUp() {
         />
       </S.ValueBox>
       <S.ValueBox>
-
-        <p>Повтор пароля  </p>
-        <S.Inputs onChange={changer} name="password_repeat" type="password" />
 
         <p>повтор пароля для входа в кабинет </p>
         {(passwordRep.minLengthError || passwordRep.maxLengthError) &&

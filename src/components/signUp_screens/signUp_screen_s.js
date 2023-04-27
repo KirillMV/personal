@@ -4,7 +4,6 @@ export const Body = styled.div`
   margin-left: calc(50vw - 222px);
   margin-right: calc(50vw - 222px);
   width: 444px;
-  height: 854px;
   background: #f5f5f5;
   border-radius: 12px;
   display: flex;
@@ -67,5 +66,6 @@ height: 40px;
 background: #e52020;
 border-radius: 7px;
 margin-top:50px;
+margin-bottom:30px;
   
 `;
