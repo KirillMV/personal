@@ -47,6 +47,7 @@ function SignUp() {
   return (
     <S.Body>
       <S.H1>Регистрация</S.H1>
+      <S.Box>
       <S.ValueBox>
         <p>Логин для входа в кабинет</p>
         <S.Inputs onChange={changer} name="login" type="text" />
@@ -206,7 +207,7 @@ function SignUp() {
       </S.ValueBox>
 
       <S.ValueBox>
-        <p>пароль для входа в кабинет</p>
+        <p>Пароль </p>
         <S.Inputs
           onChange={(e) => {
             password.onChange(e);
@@ -219,9 +220,10 @@ function SignUp() {
         />
       </S.ValueBox>
       <S.ValueBox>
-        <p>повтор пароля для входа в кабинет </p>
+        <p>Повтор пароля  </p>
         <S.Inputs onChange={changer} name="password_repeat" type="password" />
       </S.ValueBox>
+      </S.Box>
       <S.Button
         onClick={() => {
           if (form.password && form.password === form.password_repeat) {
