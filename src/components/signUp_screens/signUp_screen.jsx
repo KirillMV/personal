@@ -288,6 +288,9 @@ function SignUp() {
       </S.ValueBox>
 
       <S.ValueBox>
+
+        <p>Пароль </p>
+
         <p>пароль для входа в кабинет</p>
         {(password.minLengthError || password.maxLengthError) &&
           password.isDirty &&
@@ -300,6 +303,7 @@ function SignUp() {
         {password.isDirty && password.isEmpty && (
           <div style={{ color: "red" }}> Обязательное поле </div>
         )}
+
         <S.Inputs
           onChange={(e) => {
             password.onChange(e);
@@ -312,6 +316,10 @@ function SignUp() {
         />
       </S.ValueBox>
       <S.ValueBox>
+
+        <p>Повтор пароля  </p>
+        <S.Inputs onChange={changer} name="password_repeat" type="password" />
+
         <p>повтор пароля для входа в кабинет </p>
         {(passwordRep.minLengthError || passwordRep.maxLengthError) &&
           passwordRep.isDirty &&
@@ -331,6 +339,7 @@ function SignUp() {
         }}
         onBlur={(e) => passwordRep.onBlur(e)}
         value={passwordRep.value} name="password_repeat" type="password" />
+
       </S.ValueBox>
       </S.Box>
       <S.Button
