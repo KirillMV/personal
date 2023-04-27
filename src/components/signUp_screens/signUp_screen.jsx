@@ -11,8 +11,15 @@ function SignUp() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
+  const login = useInput("", {
+    isEmpty: true,
+    minLength: 3,
+    maxLength: 10,
+    semiNumbers: true,
+  });
   const email = useInput("", { isEmpty: true, minLength: 3, isEmail: true });
-  const password = useInput("", { isEmpty: true, minLength: 5 });
+  const password = useInput("", { isEmpty: true, minLength: 5 , maxLength:12, semiNumbers:true});
+  const passwordRep = useInput("", { isEmpty: true, minLength: 5 , maxLength:12, semiNumbers:true});
   const taxpayerId = useInput("", {
     isEmpty: true,
     minLength: 10,
@@ -43,13 +50,45 @@ function SignUp() {
     maxLength: 12,
     isName: true,
   });
+  const organization = useInput("", {
+    isEmpty: true,
+    minLength: 4,
+    maxLength: 15,
+    anyAndNumbers:true,
+  });
+  const regAddress = useInput("", {
+    isEmpty: true,
+    minLength: 4,
+    maxLength: 20,
+    anyAndNumbers:true,
+  });
 
   return (
     <S.Body>
       <S.H1>Регистрация</S.H1>
       <S.ValueBox>
         <p>Логин для входа в кабинет</p>
-        <S.Inputs onChange={changer} name="login" type="text" />
+        {(login.minLengthError || login.maxLengthError) &&
+          login.isDirty &&
+          !login.namesError && (
+            <div style={{ color: "red" }}>Некорректная длина лоигна</div>
+          )}
+        {login.isDirty && login.latNumbers && (
+            <div style={{ color: "red" }}>Латинские буквы и цифры</div>
+          )}
+        {login.isDirty && login.isEmpty && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
+        <S.Inputs
+          onChange={(e) => {
+            login.onChange(e);
+            setForm({ ...form, [e.target.name]: e.target.value });
+          }}
+          onBlur={(e) => login.onBlur(e)}
+          value={login.value}
+          name="login"
+          type="text"
+        />
       </S.ValueBox>
 
       <S.ValueBox>
@@ -103,6 +142,7 @@ function SignUp() {
           type="text"
         />
       </S.ValueBox>
+
       <S.ValueBox>
         <p>Отчество</p>
         {((patronymic.isDirty && patronymic.minLengthError) ||
@@ -126,10 +166,31 @@ function SignUp() {
           type="text"
         />
       </S.ValueBox>
+
       <S.ValueBox>
-        <p>Наименование организации</p>
-        <S.Inputs onChange={changer} name="organization_name" type="text" />
+      <p>Наименование организации</p>
+        {((organization.isDirty && organization.minLengthError) ||
+          organization.maxLengthError) && (
+          <div style={{ color: "red" }}>Некорректное название</div>
+        )}
+        {organization.isDirty && organization.anyAndNumbers && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
+        {organization.isDirty && organization.isEmpty && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
+        <S.Inputs
+          onChange={(e) => {
+            organization.onChange(e);
+            setForm({ ...form, [e.target.name]: e.target.value });
+          }}
+          onBlur={(e) => organization.onBlur(e)}
+          value={organization.value}
+          name="organization_name"
+          type="text"
+        />
       </S.ValueBox>
+
       <S.ValueBox>
         <p>email</p>
         {email.isDirty && email.emailError && !email.isEmpty && (
@@ -201,12 +262,43 @@ function SignUp() {
       </S.ValueBox>
 
       <S.ValueBox>
-        <p>Юридический адресс</p>
-        <S.Inputs onChange={changer} name="registered_address" type="text" />
+      <p>Юридический адресс</p>
+        {((regAddress.isDirty && regAddress.minLengthError) ||
+          regAddress.maxLengthError) && (
+          <div style={{ color: "red" }}>Некорректная длина aдресса</div>
+        )}
+         {regAddress.isDirty && regAddress.anyAndNumbers && (
+          <div style={{ color: "red" }}> Некорректный адрес </div>
+        )}
+        {regAddress.isDirty && regAddress.isEmpty && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
+        
+        <S.Inputs
+        onChange={(e) => {
+          regAddress.onChange(e);
+          setForm({ ...form, [e.target.name]: e.target.value });
+        }}
+        onBlur={(e) => regAddress.onBlur(e)}
+          value={regAddress.value}
+          name="registered_address"
+          type="text"
+        />
       </S.ValueBox>
 
       <S.ValueBox>
         <p>пароль для входа в кабинет</p>
+        {(password.minLengthError || password.maxLengthError) &&
+          password.isDirty &&
+          !password.namesError && (
+            <div style={{ color: "red" }}>Пароль от 5 до 8 символов</div>
+          )}
+        {password.isDirty && password.latNumbers && (
+            <div style={{ color: "red" }}>Латинские буквы и цифры</div>
+          )}
+        {password.isDirty && password.isEmpty && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
         <S.Inputs
           onChange={(e) => {
             password.onChange(e);
@@ -220,7 +312,24 @@ function SignUp() {
       </S.ValueBox>
       <S.ValueBox>
         <p>повтор пароля для входа в кабинет </p>
-        <S.Inputs onChange={changer} name="password_repeat" type="password" />
+        {(passwordRep.minLengthError || passwordRep.maxLengthError) &&
+          passwordRep.isDirty &&
+          !passwordRep.namesError && (
+            <div style={{ color: "red" }}>Пароль от 5 до 8 символов</div>
+          )}
+        {passwordRep.isDirty && passwordRep.latNumbers && (
+            <div style={{ color: "red" }}>Латинские буквы и цифры</div>
+          )}
+        {passwordRep.isDirty && passwordRep.isEmpty && (
+          <div style={{ color: "red" }}> Обязательное поле </div>
+        )}
+        <S.Inputs
+         onChange={(e) => {
+          passwordRep.onChange(e);
+          setForm({ ...form, [e.target.name]: e.target.value });
+        }}
+        onBlur={(e) => passwordRep.onBlur(e)}
+        value={passwordRep.value} name="password_repeat" type="password" />
       </S.ValueBox>
       <S.Button
         onClick={() => {
@@ -231,6 +340,15 @@ function SignUp() {
           }
           console.log(form);
         }}
+        disabled={
+          email.inputValid ||
+          password.inputValid ||
+          taxRegCode.inputValid ||
+          taxpayerId.inputValid ||
+          name.inputValid ||
+          lastName.inputValid ||
+          patronymic.inputValid
+        }
       >
         Зарегестрироваться
       </S.Button>
