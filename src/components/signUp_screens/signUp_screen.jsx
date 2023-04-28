@@ -11,9 +11,6 @@ function SignUp() {
   let [form, setForm] = useState({});
 let[regComplete, setRegComplete] = useState(false);
 
-
-
-
   function clicer() {
 console.log('Клик');
     
