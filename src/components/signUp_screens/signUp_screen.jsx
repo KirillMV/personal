@@ -26,7 +26,14 @@ console.log('Клик');
         .then((response) => response.json())
         .then((posts) => {
           console.log(posts);
-          setRegComplete(true)
+          if(posts === "Created   "){
+            console.log('Да');
+            setRegComplete(true)
+          }
+          else{
+
+          }
+          
         });
     } else {
       console.log("пароли не совпадают");
