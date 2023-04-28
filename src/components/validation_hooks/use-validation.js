@@ -35,7 +35,7 @@ const useValidation = (value, validations) => {
               : setEmailError(true);
             break;
             case "isName":
-                const reName = /^(?!.*([а-яёa-z])\1{2})[а-яёa-z]+$/iu
+                const reName = /^(?!.*([а-яёa-z])\1{2})[а-яёА-ЯЁ]+$/iu
                 reName.test(String(value).toLowerCase())
                 ? setNameError(false)
                 : setNameError(true);
@@ -53,7 +53,7 @@ const useValidation = (value, validations) => {
                 : setLatNumbers(true);
               break;
             case "anyAndNumbers":
-              const reAllNumbers =  /^ [0-9][а-яёa-z]+$/iu
+              const reAllNumbers =  /^[#.0-9а-яёa-z\s,-]+$/
               reAllNumbers.test(String(value).toLowerCase())
               ? setAnyAndNumbers(false)
               : setAnyAndNumbers(true);
@@ -67,12 +67,13 @@ const useValidation = (value, validations) => {
     }, [value]);
   
 useEffect(()=>{
-if(isEmpty || minLengthError || maxLengthError || emailError || namesError || numberError){
+if(isEmpty || minLengthError || maxLengthError ||!emailError || namesError || numberError || latNumbers || anyAndNumbers){
+
   setInputValid(false)
 }else{
   setInputValid(true)
 }
-},[isEmpty,minLengthError,maxLengthError,emailError,namesError,numberError])
+},[isEmpty,minLengthError,maxLengthError,emailError,namesError,numberError,latNumbers,anyAndNumbers])
 
     return {
       isEmpty,
