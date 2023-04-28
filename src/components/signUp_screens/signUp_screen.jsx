@@ -2,9 +2,17 @@ import React from "react";
 import * as S from "./signUp_screen_s";
 import { useState } from "react";
 import useInput from "../validation_hooks/use-input";
+import { Navigate } from "react-router-dom";
+
+
+
 
 function SignUp() {
   let [form, setForm] = useState({});
+let[regComplete, setRegComplete] = useState(false);
+
+
+
 
   function clicer() {
 console.log('Клик');
@@ -21,7 +29,7 @@ console.log('Клик');
         .then((response) => response.json())
         .then((posts) => {
           console.log(posts);
-          console.log('Где то тут ответ');
+          setRegComplete(true)
         });
     } else {
       console.log("пароли не совпадают");
@@ -386,6 +394,7 @@ console.log('Клик');
       >
         Зарегестрироваться
       </S.Button>
+      {regComplete &&<Navigate to='/'/>}
     </S.Body>
   );
 }
