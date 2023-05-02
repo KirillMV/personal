@@ -1,11 +1,34 @@
 import React from "react";
 import * as S from "./login_screen_s";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useInput from "../validation_hooks/use-input";
+import { Navigate } from "react-router-dom";
+
+
 
 function LoginScreen() {
+
+  let[logComplete, setLogComplete] = useState(false);
+
   function clicer() {
+    console.log(form);
+
+    fetch(`http://saas.legionsecurity.ru/api/auth/login/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => response.json())
+      .then((posts) => {
+        console.log(posts);
+       if(posts.access_token){
+        setLogComplete(true)
+       }
+      });
+
     console.log(form);
   }
 
@@ -77,11 +100,13 @@ function LoginScreen() {
           type="password"
         />
         <S.ButtonEntr
+        
           onClick={clicer}
           disabled={password.inputValid || login.inputValid}
         >
           войти
         </S.ButtonEntr>
+        {logComplete && <Navigate to={"/home"}/>}
         <div></div>
         <Link to={"/signup"}>
           <S.ButtonReg>зарегистрироваться</S.ButtonReg>
