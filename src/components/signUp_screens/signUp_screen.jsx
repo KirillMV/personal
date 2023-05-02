@@ -4,9 +4,6 @@ import { useState } from "react";
 import useInput from "../validation_hooks/use-input";
 import { Navigate } from "react-router-dom";
 
-
-
-
 function SignUp() {
   let [form, setForm] = useState({});
 let[regComplete, setRegComplete] = useState(false);
@@ -26,7 +23,7 @@ console.log('Клик');
         .then((response) => response.json())
         .then((posts) => {
           console.log(posts);
-          if(posts === "Created   "){
+          if(posts.message ==="Created"){
             console.log('Да');
             setRegComplete(true)
           }
