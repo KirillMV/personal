@@ -96,7 +96,7 @@ function LoginScreen() {
             setForm({ ...form, [e.target.name]: e.target.value });
           }}
           onBlur={(e) => password.onBlur(e)}
-          name="password"
+          name="password" 
           type="password"
         />
         <S.ButtonEntr
