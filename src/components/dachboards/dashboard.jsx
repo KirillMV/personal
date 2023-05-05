@@ -47,8 +47,8 @@ const [info,setInfo] = useState({
             {
               id: 1,
               label: "statistic_1",
-              data:[...info.yInfo,100],
-              borderColor: "#3333ff",
+              data:[...info.yInfo,27],
+              borderColor: "#5b37d3",
               lineTension: 0.5,
             },
           ],
