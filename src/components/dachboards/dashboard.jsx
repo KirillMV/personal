@@ -19,6 +19,7 @@ const [info,setInfo] = useState({
       fetch(`https://demo.ideco.ru/prometheus/api/v1/query_range?start=${timeStart}&query=avg%28sum%28irate%28node_cpu_seconds_total%7Bmode%21%7E%22idle%7Cuser%7Csteal%22%7D%5B30s%5D%29%29+by+%28cpu%29%29&end=${timeEnd}&step=1`)
         .then((response) => response.json())
         .then((posts) => {
+          console.log('Загрузился');
          let x = []
          let y = []
           posts.data.result[0].values.forEach(el=>{
@@ -45,8 +46,10 @@ const [info,setInfo] = useState({
           datasets: [
             {
               id: 1,
-              label: "22",
-              data: info.yInfo,
+              label: "statistic_1",
+              data:[...info.yInfo,100],
+              borderColor: "#3333ff",
+              lineTension: 0.5,
             },
           ],
         }}
