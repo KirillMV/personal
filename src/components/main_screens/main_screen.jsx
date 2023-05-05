@@ -29,8 +29,8 @@ function MainScreen() {
             <S.buttonLeft id="documents" onClick={clicker} >Документы</S.buttonLeft>
             <S.buttonLeft  id="widget" onClick={clicker}>Дашборды </S.buttonLeft>
             <S.buttonLeft  id="support" onClick={clicker}>Поддержка</S.buttonLeft>
-            <p>Документы</p>
-            <p>Услуги</p>
+            {/* <p>Документы</p>
+            <p>Услуги</p> */}
           </S.ModulBox>
         </S.LeftMenu>
         <S.MainContent>

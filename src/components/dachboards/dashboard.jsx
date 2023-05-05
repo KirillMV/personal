@@ -12,7 +12,6 @@ const [info,setInfo] = useState({
   xInfo : [],
   yInfo : [],
 })
-
   useEffect(()=>{
     setInterval(()=>{
       const timeEnd = (new Date()).getTime()/1000
@@ -26,7 +25,6 @@ const [info,setInfo] = useState({
             x.push(`${(new Date(el[0]*1000)).getHours()}:${(new Date(el[0]*1000)).getMinutes()}`)
             y.push(Math.round(el[1]*100))
           })
-  
           setInfo({
             xInfo : x,
             yInfo : y,
@@ -35,15 +33,9 @@ const [info,setInfo] = useState({
         });
     },5000)
   },[])
-
-
-
-
   return (
    <div>
     <div>{info.xInfo[1]}___{info.xInfo[info.xInfo.length-1]}</div>
-  
-
       <Line
       height={"600px"}
       width={"1000px"}

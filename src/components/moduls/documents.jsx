@@ -1,7 +1,7 @@
 import React from "react";
 
 function Documents() {
-  return (<div>Документы</div>);
+  return <img src="./img/docW.jpg" alt="" />;
 }
 
 export default Documents;
