@@ -26,9 +26,9 @@ function MainScreen() {
         <S.LeftMenu>
           <S.Logo src="./img/logo2.png" />
           <S.ModulBox>
-            <p id="documents" onClick={clicker} >Документы</p>
-            <button id="widget" onClick={clicker}>Дашборды </button>
-            <p id="support" onClick={clicker}>Поддержка</p>
+            <S.buttonLeft id="documents" onClick={clicker} >Документы</S.buttonLeft>
+            <S.buttonLeft  id="widget" onClick={clicker}>Дашборды </S.buttonLeft>
+            <S.buttonLeft  id="support" onClick={clicker}>Поддержка</S.buttonLeft>
             <p>Документы</p>
             <p>Услуги</p>
           </S.ModulBox>
@@ -38,7 +38,7 @@ function MainScreen() {
             <h2>Главное меню-что бы понимать где мы</h2>
             <div>
               <p>Баланс: 50000 рупиев</p>
-              <p>ООО "Рога и жопы"</p>
+              <p>ООО "МистерТвистер"</p>
             </div>
           </S.Header>
 

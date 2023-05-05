@@ -60,3 +60,10 @@ export const Content = styled.div`
 export const Footer = styled.footer`
   background-color: #d7d7d7;
 `;
+
+
+export const buttonLeft = styled.button`
+  background-color: #3b83bd;
+  border:none;
+  font-family: 'Montserrat';
+`;
