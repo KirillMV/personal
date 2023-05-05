@@ -13,6 +13,7 @@ function MainScreen() {
     if (event.target.id==='support'){
       setContent(<Support/>)
     }
+    
     if(event.target.id==='widget'){
     setContent(<Widget/>)
     }
