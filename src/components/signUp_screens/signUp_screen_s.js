@@ -50,7 +50,7 @@ color: #8c8787;
 `;
 export const Box =styled.div`
 margin-top: 60px;
-`
+`;
 
 export const Button = styled.button`
 font-family: 'Montserrat';
@@ -61,11 +61,27 @@ line-height: 14px;
 text-align: center;
 text-transform: uppercase;
 color: #FFFFFF;
-width: 273px;
+width: 250px;
 height: 40px;
 background: #e52020;
 border-radius: 7px;
-margin-top:50px;
-margin-bottom:30px;
-  
+margin-top:30px;
+margin-bottom:10px;
 `;
+
+export const ButtonBack = styled.button`
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 14px;
+text-align: center;
+text-transform: uppercase;
+width: 170px;
+height: 40px;
+background: #e52020;
+border-radius: 7px;
+margin-top:10px;
+margin-bottom:20px;
+
+`

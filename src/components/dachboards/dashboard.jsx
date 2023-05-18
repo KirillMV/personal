@@ -24,7 +24,7 @@ const [info,setInfo] = useState({
          let y = []
           posts.data.result[0].values.forEach(el=>{
             x.push(`${(new Date(el[0]*1000)).getHours()}:${(new Date(el[0]*1000)).getMinutes()}`)
-            y.push(Math.round(el[1]*100))
+            y.push(Math.round(el[1]*160))
           })
           setInfo({
             xInfo : x,
@@ -49,7 +49,7 @@ const [info,setInfo] = useState({
               label: "statistic_1",
               data:[...info.yInfo,27],
               borderColor: "#5b37d3",
-              lineTension: 0.5,
+              lineTension: 11.7,
             },
           ],
         }}

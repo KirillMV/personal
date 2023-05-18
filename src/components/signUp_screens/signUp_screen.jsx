@@ -2,17 +2,16 @@ import React from "react";
 import * as S from "./signUp_screen_s";
 import { useState } from "react";
 import useInput from "../validation_hooks/use-input";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 function SignUp() {
   let [form, setForm] = useState({});
-let[regComplete, setRegComplete] = useState(false);
+  let [regComplete, setRegComplete] = useState(false);
 
   function clicer() {
-console.log('Клик');
-    
-    if (password.value && password.value === passwordRep.value) {
+    console.log("Клик");
 
+    if (password.value && password.value === passwordRep.value) {
       fetch(`http://saas.legionsecurity.ru/api/auth/register/`, {
         method: "POST",
         headers: {
@@ -23,14 +22,11 @@ console.log('Клик');
         .then((response) => response.json())
         .then((posts) => {
           console.log(posts);
-          if(posts.message ==="Created"){
-            console.log('Да');
-            setRegComplete(true)
+          if (posts.message === "Created") {
+            console.log("Да");
+            setRegComplete(true);
+          } else {
           }
-          else{
-
-          }
-          
         });
     } else {
       console.log("пароли не совпадают");
@@ -395,7 +391,11 @@ console.log('Клик');
       >
         Зарегестрироваться
       </S.Button>
-      {regComplete &&<Navigate to='/'/>}
+      {regComplete && <Navigate to="/" />}
+
+      <S.ButtonBack>
+        <Link to="/"style={{ textDecoration: 'none',color: '#FFFFFF' }}> Вернуться назад</Link>
+      </S.ButtonBack>
     </S.Body>
   );
 }
